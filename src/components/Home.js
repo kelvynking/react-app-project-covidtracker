@@ -22,17 +22,6 @@ function Home() {
       .then((response) => response.json())
       .then((data) => {
         const results = data[0].provinces;
-        console.log(results);
-        // for (const result of results) {
-        //   console.log(result);
-        //   const array = Object.values(result);
-        //   console.log(array);
-        //   const iterator = array.values();
-
-        //   for (const value of iterator) {
-        //     console.log(value);
-        //   }
-        // }
         setGetData(results);
         setIsLoading(false);
       })
@@ -46,8 +35,8 @@ function Home() {
   }
 
   return (
-    <div>
-      <div class="row row-cols-3">
+    <div className="container p-3">
+      <div className="row row-cols-3 g-2">
         {getData.map((data) => (
           <CovidCard
             key={data.province}
