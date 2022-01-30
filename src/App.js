@@ -10,15 +10,13 @@ import About from './components/About';
 function App() {
   return (
     <Router>
-      <div>
+        <Navigation />
         <Switch>
-          <Navigation />
           <Route exact path="/" component={Home} /> 
           <Route exact path="/enterstats" component={EnterStats} />
           <Route exact path="/viewstats" component={ViewStats} />
           <Route exact path="/about" component={About} />
         </Switch>
-      </div>
     </Router>
   );
 }
