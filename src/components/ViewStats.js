@@ -30,12 +30,14 @@ function ViewStats() {
   }
   return (
     <div className="container p-3">
+      <h1>PCR/RAT Test Results Data: </h1>
       {getStats.map((result) => (
         <ResultsCard
           key={result.id}
           result={result.result}
           symptoms={result.symptoms}
           testDate={result.testDate}
+          state={result.state}
         />
       ))}
     </div>

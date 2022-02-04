@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 function EnterStats() {
   const dateInputRef = useRef();
   const symptomsInputRef = useRef();
+  const stateInputRef = useRef();
   const history = useHistory();
 
   const [radioCheck, setRadioCheck] = useState("positive");
@@ -19,11 +20,13 @@ function EnterStats() {
 
     const dateEntered = dateInputRef.current.value;
     const symptomsEntered = symptomsInputRef.current.value;
+    const stateEntered = stateInputRef.current.value;
 
     const addCovidData = {
       testDate: dateEntered,
       symptoms: symptomsEntered,
       result: radioCheck,
+      state: stateEntered,
     };
 
     fetch(
@@ -47,7 +50,7 @@ function EnterStats() {
           Date of test:
         </label>
         <div className="col-sm-10">
-          <input type="test" className="testdate" ref={dateInputRef}></input>
+          <input type="text" className="testdate" ref={dateInputRef}></input>
         </div>
       </div>
       <div className="row mb-3">
@@ -97,6 +100,15 @@ function EnterStats() {
           </div>
         </div>
       </fieldset>
+
+      <div className="row mb-3">
+        <label for="state" className="col-sm-2 col-form-label">
+          State:
+        </label>
+        <div className="col-sm-10">
+          <input type="text" className="state" ref={stateInputRef}></input>
+        </div>
+      </div>
 
       <button type="submit" className="btn btn-primary">
         Submit

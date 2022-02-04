@@ -17,6 +17,11 @@ function ResultsCard(props) {
           <span className="fw-bold">Result: </span>
           {props.result}
         </li>
+
+        <li className="list-group-item">
+          <span className="fw-bold">State: </span>
+          {props.state}
+        </li>
       </ul>
     </div>
   );
