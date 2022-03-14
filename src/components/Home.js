@@ -8,10 +8,11 @@ function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    var todayDate = new Date().toISOString().slice(0, 10);
-    console.log(todayDate);
+    const todayDate = new Date();
+    todayDate.setDate(todayDate.getDate() - 1);
+    const yesterdayDate = todayDate.toISOString().slice(0, 10);
     fetch(
-      `https://covid-19-statistics.p.rapidapi.com/reports?iso=AUS&date=${todayDate}`,
+      `https://covid-19-statistics.p.rapidapi.com/reports?iso=AUS&date=${yesterdayDate}`,
       {
         method: "GET",
         headers: {
