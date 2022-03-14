@@ -8,12 +8,14 @@ function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    var todayDate = new Date().toISOString().slice(0, 10);
+    console.log(todayDate);
     fetch(
-      "https://covid-19-data.p.rapidapi.com/report/country/code?date=2020-04-01&code=au",
+      `https://covid-19-statistics.p.rapidapi.com/reports?iso=AUS&date=${todayDate}`,
       {
         method: "GET",
         headers: {
-          "x-rapidapi-host": "covid-19-data.p.rapidapi.com",
+          "x-rapidapi-host": "covid-19-statistics.p.rapidapi.com",
           "x-rapidapi-key":
             "1de65fd4dcmsh1d9c530d04ab73bp127509jsn52b43fc85331",
         },
@@ -21,7 +23,7 @@ function Home() {
     )
       .then((response) => response.json())
       .then((data) => {
-        const results = data[0].provinces;
+        const results = data.data;
         setGetData(results);
         setIsLoading(false);
       })
@@ -39,8 +41,8 @@ function Home() {
       <div className="row row-cols-3 g-2">
         {getData.map((data) => (
           <CovidCard
-            key={data.province}
-            province={data.province}
+            key={data.region.province}
+            province={data.region.province}
             confirmed={data.confirmed}
             deaths={data.deaths}
             recovered={data.recovered}
